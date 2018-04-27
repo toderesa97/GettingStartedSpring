@@ -13,7 +13,7 @@ public class TopicController {
 
     @RequestMapping("/topics")
     public List<Topic> getAllTopics() {
-        // whatever I return is going to convert to JSON.
+        // whatever I return is going to be converted to JSON.
         return Arrays.asList(new Topic("T1", "Topic1"),
                             new Topic("T2", "Topic2"));
     }
