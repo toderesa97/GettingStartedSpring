@@ -1,21 +1,28 @@
 package main.controllers;
 
 import main.classes.Topic;
+import main.classes.TopicService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
 public class TopicController {
 
+    @Autowired
+    private TopicService topicService;
+
     @RequestMapping("/topics")
     public List<Topic> getAllTopics() {
-        // whatever I return is going to be converted to JSON.
-        return Arrays.asList(new Topic("T1", "Topic1"),
-                            new Topic("T2", "Topic2"));
+        return topicService.getAllTopics();
+    }
+
+    @RequestMapping("/topics/{topic_name}")
+    public Topic getTopic (@PathVariable("topic_name") String topicName) {
+        return topicService.getTopic(topicName);
     }
 
 }
